@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js">
+    </script>
+</head>
+<body ng-app="Myapp" ng-controller="Mycntrl">
+    <script>
+        var app= angular.module("Myapp",[]);
+        app.controller("Mycntrl",function($scope)
+        {
+            $scope.fn;
+            $scope.ln; 
+            $scope.full;
+
+            $scope.fullname = function(){
+                $scope.full = $scope.fn + " " + $scope.ln;
+                return $scope.full;
+            }
+        });
+    </script>
+    <h2>Cancat two String</h2>
+    <input type="text" ng-model="fn" placeholder="first name"> <br>
+    <input type="text" ng-model="ln" placeholder="last name"> <br>
+    <button ng-click="fullname()">click me</button>
+    <br>
+    {{full}}
+</body>
+
+</html>
