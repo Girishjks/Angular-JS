@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('myctrl', function ($scope) {
+        $scope.item = ['milk', 'eggs', 'Bread', 'coffee'];
+        $scope.additem = function(newitem){
+            $scope.item.push(newitem);
+            $scope.newitem = "";
+        }
+        $scope.remove = function(index){
+            $scope.item.splice(index,1);
+        }
+        });
+    </script>
+    <h2>Add & Remove Item in Shopping List</h2>
+    <ul>
+        <li ng-repeat="i in item">{{i}}
+    <button ng-click="remove($index)">remove_item</button>
+        </li>
+    </ul>
+    <input type="text" ng-model="newitem">
+    <button ng-click="additem(newitem)">add_item</button>
+</body>
+</html>
