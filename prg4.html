@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="newlib.js"></script>
+</head>
+<body ng-app = "myApp" ng-controller="myctrl">
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+        $scope.ans;
+        $scope.factorial = function(){
+            $scope.ans = fact($scope.num);
+        };
+        $scope.sqaure = function(){
+            $scope.ans = $scope.num*$scope.num;
+        };
+        function fact(num){
+            if(num == 1 )
+                return 1;
+            else
+                return num * fact(num - 1);
+        };
+        });
+    </script>
+    <input type="number" ng-model="num">
+    <button ng-click="factorial()">Factorial</button>
+    <button ng-click="sqaure()">Square</button><br>
+    {{ans}}
+</body>
+</html>

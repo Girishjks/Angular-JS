@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="newlib.js"></script>
+</head>
+<body ng-app = "myApp" ng-controller="myctrl">
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+        $scope.students = [];
+        $scope.add = function(){
+            if ($scope.name && $scope.cgpa){
+            $scope.students.push({name: $scope.name,cgpa: $scope.cgpa});
+            $scope.name = '';
+            $scope.cgpa = '';
+        }
+        };
+        });
+    </script>
+    <input type="text" ng-model="name">
+    <input type="text" ng-model="cgpa">
+    <button ng-click="add()">add student</button><br>
+    Total student = {{students.length}}
+    <ul>
+        <li ng-repeat="i in students">{{i.name}}-{{i.cgpa}}</li>
+    </ul>
+</body>
+</html>
