@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app = "myApp" ng-controller="myctrl">
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myctrl', function ($scope) {
+        $scope.students = [];
+        $scope.add = function(){
+            if ($scope.name && $scope.age){
+            $scope.students.push({name: $scope.name,age: $scope.age,email: $scope.email});
+            $scope.name = '';
+            $scope.age = '';
+            $scope.email = '';
+            };
+        };
+        $scope.delete = function($index){
+            var confirmDel = confirm("are u sure");
+            if(confirmDel)
+                $scope.students.splice($index,1)
+        };
+        $scope.edit = function($index){
+            var uname = prompt('enter name');
+            var uage = parseInt(prompt('enter age'));
+            var uemail  = prompt('enter email');
+            if(uname != null && uage != null && uemail != null){
+                var ustudent = { name: uname, age: uage,email : uemail};
+                
+            }
+            $scope.students.splice($index, 1,ustudent);
+        };
+    });
+    </script>
+    <input type="text" ng-model="name">
+    <input type="number" ng-model="age">
+    <input type="text" ng-model="email">
+    <button ng-click="add()">submit</button>
+    <ul>
+        <li ng-repeat="i in students">{{i.name}} {{i.age}} {{i.email}}
+            <button ng-click="edit($index)">edit</button>
+            <button ng-click="delete($index)">delete</button>
+        </li>
+    </ul>
+</body>
+</html>

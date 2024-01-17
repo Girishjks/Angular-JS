@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app = "myApp" ng-controller="myctrl">
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+            $scope.tasks = [];
+            $scope.newtask = "";
+            $scope.addTask = function(){
+                $scope.tasks.push($scope.newtask);
+                $scope.newtask = '';
+            };
+            $scope.deleteTask = function($index){
+                var confirmDel = confirm("are u sure");
+                if(confirmDel)
+                    $scope.tasks.splice($index,1)
+            };
+            $scope.edittask = function($index){
+                var updateTask = prompt('enter new ');
+                if(updateTask != null)
+                    $scope.tasks.splice($index,1,updateTask)
+            };
+        });
+    </script>
+    <input type="text" ng-model="newtask">
+    <button ng-click="addTask()">submit</button>
+    <ul>
+        <li ng-repeat="i in tasks">{{i}} <button ng-click="edittask($index)">edit</button><button ng-click="deleteTask($index)">delete</button></li>
+    </ul>
+</body>
+</html>
