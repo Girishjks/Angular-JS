@@ -12,17 +12,13 @@
         var app= angular.module("Myapp",[]);
         app.controller("Mycntrl",function($scope)
         {
-            $scope.fn;
-            $scope.ln; 
             $scope.full;
 
             $scope.fullname = function(){
                 $scope.full = $scope.fn + " " + $scope.ln;
-                return $scope.full;
             }
         });
     </script>
-    <h2>Cancat two String</h2>
     <input type="text" ng-model="fn" placeholder="first name"> <br>
     <input type="text" ng-model="ln" placeholder="last name"> <br>
     <button ng-click="fullname()">click me</button>
