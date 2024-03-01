@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myctrl"> 
+    <form ng-submit="login()">
+        name: <input type="text" ng-model="username" placeholder="name"><br>
+        password: <input type="password" ng-model="password" placeholder="password">
+        <button type="submit">submit</button>
+    </form>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+           $scope.login = function(){
+            if ($scope.username == 'bharath' && $scope.password == '123456789'){
+                alert('Login successful');
+            } else {
+                alert('Login failed. Invalid username or password.');
+            }
+           };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myctrl">
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+            $scope.student = ['wheal', 'shane', 'saturday']; 
+        });
+    </script>
+    Original String:
+    <ul>
+        <li ng-repeat="i in student">{{i}}</li>
+    </ul>
+    UpperCase String:
+    <ul>
+        <li ng-repeat="i in student">{{i|uppercase}}</li>
+    </ul>
+</body>
+</html>

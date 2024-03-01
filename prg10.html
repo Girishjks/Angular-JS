@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myctrl">
+    <input type="text" ng-model="newItem" placeholder="item name">
+    <button ng-click="addItem()">Add Item</button>
+    <ul>
+        <li ng-repeat="i in items ">
+            {{i}}<button ng-click="removeItem($index)">Remove</button>
+        </li>
+    </ul>
+    total item = {{items.length}}
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+            $scope.items = ['Item 1', 'Item 2', 'Item 3']; 
+            $scope.newItem = '';
+            $scope.addItem = function (){
+                if ($scope.newItem) {
+                    $scope.items.push($scope.newItem);
+                    $scope.newItem = ''; 
+                }
+            };
+            $scope.removeItem = function (index) {
+            $scope.items.splice(index, 1);
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myctrl">
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+            $scope.employees = [{ name: 'Ram', salary: 50000 },{ name: 'abi', salary: 60000 },{ name: 'sam', salary: 75000 },{ name: 'raj', salary: 55000 }];
+            $scope.sname = '';
+            $scope.ssalary = '';
+        });
+    </script>
+    <input type="text" placeholder="name" ng-model="sname">
+    <input type="text" placeholder="salary" ng-model="ssalary">
+    <ul>
+        <li ng-repeat="i in employees | filter: {name: sname, salary:ssalary}">
+        Name: {{ i.name }} - Salary: Rs{{ i.salary }}
+        </li>
+    </ul>
+</body>
+</html>
