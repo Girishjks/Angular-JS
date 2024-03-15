@@ -10,7 +10,7 @@
     <script>
         var app = angular.module('myApp', []);
         app.controller('myctrl', function ($scope) {
-            $scope.today =  Date();
+            $scope.today =  new Date();
         });
     </script>
     Date: {{today}} <br>
