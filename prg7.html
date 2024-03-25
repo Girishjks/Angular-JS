@@ -28,17 +28,20 @@
             var uname = prompt('enter name');
             var uage = parseInt(prompt('enter age'));
             var uemail  = prompt('enter email');
-            if(uname != null && uage != null && uemail != null){
+            if(uname && uage && uemail){
                 var ustudent = { name: uname, age: uage,email : uemail};
-                
+                $scope.students.splice($index, 1,ustudent);
             }
-            $scope.students.splice($index, 1,ustudent);
+            else{
+                alert("edit failed!!! insert all values")
+            }
+            
         };
     });
     </script>
-    <input type="text" ng-model="name">
-    <input type="number" ng-model="age">
-    <input type="text" ng-model="email">
+    <input type="text" ng-model="name" placeholder="name">
+    <input type="number" ng-model="age" placeholder="age">
+    <input type="text" ng-model="email" placeholder="email">
     <button ng-click="add()">submit</button>
     <ul>
         <li ng-repeat="i in students">{{i.name}} {{i.age}} {{i.email}}
